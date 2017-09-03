@@ -30,10 +30,10 @@ security :
       password : 1234
     oauth2 :
         client :
-            clientId: test
-            clientSecret: abc
-            authorized-grant-types: authorization_code,refresh_token,password
-            scope: openid
+            clientId: foo
+            clientSecret: bar
+            #authorized-grant-types: authorization_code,refresh_token,password
+            #scope: read
 
 ---
 
