@@ -25,17 +25,15 @@ spring :
         config : classpath:/conf/cache/ehcache-config.xml
 
 security :
-    user:
-      name : user
-      password : 1234
     oauth2 :
         client :
             clientId: foo
             clientSecret: bar
             #authorized-grant-types: authorization_code,refresh_token,password
             #scope: read
-        authorization:
-            check-token-access: isAuthenticated()
+        resource:
+            token-info-uri: http://localhost:8080/oauth/check_token
+
 ---
 
 # Server Setting
@@ -45,7 +43,7 @@ server :
     tomcat :
         uri-encoding : UTF-8
     servlet-path : /*
-    port: 8080
+    port: 8081
 
 spring:
     profiles:
