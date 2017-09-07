@@ -27,7 +27,7 @@ spring :
 security :
     user:
       name : user
-      password : 1234
+      password : test
     oauth2 :
         client :
             clientId: foo
@@ -36,6 +36,7 @@ security :
             #scope: read
         authorization:
             check-token-access: isAuthenticated()
+            token-key-access: isAuthenticated()
 ---
 
 # Server Setting

@@ -5,8 +5,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 import javax.sql.DataSource;
 
@@ -18,13 +22,36 @@ import javax.sql.DataSource;
 @Configuration
 public class OAuth2Configuration {
 
+
+//    @Bean
+//    public TokenStore tokenStore() {
+//        return new JwtTokenStore(jwtAccessTokenConverter());
+//    }
+//
+//    @Bean
+//    public JwtAccessTokenConverter jwtAccessTokenConverter() {
+//        return new JwtAccessTokenConverter();
+//    }
+
     @Autowired
     @Qualifier("firstDataSource")
     DataSource dataSource;
 
+
     @Bean
-    public TokenStore JdbcTokenStore() {
-        return new JdbcTokenStore(dataSource);
+    public TokenStore tokenStore() {
+        return new JwtTokenStore(jwtAccessTokenConverter());
+    }
+
+    @Bean
+    public JwtAccessTokenConverter jwtAccessTokenConverter() {
+        return new JwtAccessTokenConverter();
+    }
+
+    @Bean
+    @Primary
+    public JdbcClientDetailsService jdbcClientDetailsService() {
+        return new JdbcClientDetailsService(dataSource);
     }
 
 }
