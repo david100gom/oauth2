@@ -10,6 +10,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  *
  * Github : https://github.com/david100gom
  */
-@RepositoryRestResource
+//@RepositoryRestResource
 public interface MemberRepository extends PagingAndSortingRepository<Member, Long> {
+    Member findByUsername(String username);
 }
