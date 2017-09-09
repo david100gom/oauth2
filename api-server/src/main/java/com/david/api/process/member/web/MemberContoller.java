@@ -30,12 +30,10 @@ class MemberContoller {
     @RequestMapping("/api/member")
     public MemberData member(@AuthenticationPrincipal OAuth2Authentication authentication) {
 
-
         String username = authentication.getUserAuthentication().getPrincipal().toString();
         Set<String> scopes = authentication.getOAuth2Request().getScope();
 
         System.out.println("-----------"+username+"----");
-
 
         Member member = memberRepository.findByUsername(username);
 

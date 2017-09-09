@@ -1,3 +1,8 @@
-
+모두 DB 관리
 1. 계정 (username, password)  : 커스텀 인증 (AuthenticationManagerBuilder)
 2. authorization : client_id, client_secret  (ClientDetailsServiceConfigurer)
+
+
+3. JWT 제외 -> oauth2 만 이용.
+4. https://developers.kakao.com/docs/restapi/user-management 를 참고하여 개발
+5. 로그인 페이지 -> id, password, client_id, client_secret 를 이용여 token 가져옴

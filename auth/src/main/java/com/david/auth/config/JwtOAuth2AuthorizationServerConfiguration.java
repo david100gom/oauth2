@@ -20,7 +20,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
  *
  * Github : https://github.com/david100gom
  */
-@Configuration
+//@Configuration
 public class JwtOAuth2AuthorizationServerConfiguration extends OAuth2AuthorizationServerConfiguration {
 
 //    private final JwtAccessTokenConverter jwtAccessTokenConverter;

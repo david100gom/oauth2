@@ -32,9 +32,9 @@ security :
             #authorized-grant-types: authorization_code,refresh_token,password
             #scope: member.info.public
         resource:
-            #token-info-uri: http://localhost:8080/oauth/check_token
-            jwt:
-                key-uri: http://localhost:8080/oauth/token_key  # uri 인증방식
+            token-info-uri: http://localhost:8080/oauth/check_token
+            #jwt:
+                #key-uri: http://localhost:8080/oauth/token_key  # uri 인증방식
                 #key-value: jwt_key_test                        # key-value 인증방식
 ---
 

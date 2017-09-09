@@ -22,6 +22,10 @@ import javax.sql.DataSource;
 @Configuration
 public class OAuth2Configuration {
 
+    @Autowired
+    @Qualifier("firstDataSource")
+    DataSource dataSource;
+
 
 //    @Bean
 //    public TokenStore tokenStore() {
@@ -33,19 +37,9 @@ public class OAuth2Configuration {
 //        return new JwtAccessTokenConverter();
 //    }
 
-    @Autowired
-    @Qualifier("firstDataSource")
-    DataSource dataSource;
-
-
     @Bean
-    public TokenStore tokenStore() {
-        return new JwtTokenStore(jwtAccessTokenConverter());
-    }
-
-    @Bean
-    public JwtAccessTokenConverter jwtAccessTokenConverter() {
-        return new JwtAccessTokenConverter();
+    public TokenStore jdbcTokenStore() {
+        return new JdbcTokenStore(dataSource);
     }
 
     @Bean

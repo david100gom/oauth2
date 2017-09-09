@@ -35,8 +35,8 @@ security :
             #authorized-grant-types: authorization_code,refresh_token,password
             #scope: read
         authorization:
-            #check-token-access: isAuthenticated()
-            token-key-access: isAuthenticated()
+            check-token-access: isAuthenticated()
+            #token-key-access: isAuthenticated()
         #resource:
             #jwt:
                 #key-value: jwt_key_test
