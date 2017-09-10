@@ -28,7 +28,7 @@ class MemberContoller {
 
     @PreAuthorize("#oauth2.hasScope('member.info.public')")
     @RequestMapping("/api/member")
-    public MemberData member(@AuthenticationPrincipal OAuth2Authentication authentication) {
+    public Member member(@AuthenticationPrincipal OAuth2Authentication authentication) {
 
         String username = authentication.getUserAuthentication().getPrincipal().toString();
         Set<String> scopes = authentication.getOAuth2Request().getScope();
@@ -37,6 +37,7 @@ class MemberContoller {
 
         Member member = memberRepository.findByUsername(username);
 
-        return MemberData.from(member, scopes);
+        return member;
+        //return MemberData.from(member, scopes);
     }
 }

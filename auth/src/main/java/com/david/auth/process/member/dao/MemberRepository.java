@@ -2,6 +2,7 @@ package com.david.auth.process.member.dao;
 
 import com.david.auth.process.member.domain.Member;
 
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
@@ -10,6 +11,9 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  *
  * Github : https://github.com/david100gom
  */
-@RepositoryRestResource
-public interface MemberRepository extends PagingAndSortingRepository<Member, Long> {
+//@RepositoryRestResource
+public interface MemberRepository extends CrudRepository<Member, Long> {
+
+    Member findByUsername(String username);
+
 }

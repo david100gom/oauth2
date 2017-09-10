@@ -25,9 +25,9 @@ spring :
         config : classpath:/conf/cache/ehcache-config.xml
 
 security :
-    user:
-      name : user
-      password : test
+    #user:
+      #name : user
+      #password : test
     oauth2 :
         #client :
             #clientId: foo

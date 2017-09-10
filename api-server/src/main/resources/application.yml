@@ -78,7 +78,7 @@ spring:
             timeBetweenEvictionRunsMillis : 1800000
     jpa:
       hibernate:
-        ddl-auto: update
+        ddl-auto: none
         naming:
           physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       show-sql: false
