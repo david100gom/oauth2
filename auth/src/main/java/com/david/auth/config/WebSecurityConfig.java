@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -16,6 +17,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
  * Github : https://github.com/david100gom
  */
 @Configuration
+@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -39,11 +41,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/admin/**").hasAuthority("ADMIN")
 //                .anyRequest().authenticated();
 
-        http.csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/**").authenticated();
+        // 모두 차단
+        // 커스텀 로그인화면
+        // TODO http://websystique.com/spring-security/spring-security-4-custom-login-form-annotation-example/
+        http.authorizeRequests()
+            .antMatchers("/login").permitAll()
+            .antMatchers("/**").authenticated()
+            .and().formLogin().loginPage("/login")
+            .usernameParameter("username").passwordParameter("password")
+            .and().csrf()
+            .and().exceptionHandling().accessDeniedPage("/Access_Denied");
 
-        // 로그인화면
+        // http.csrf();
+
+        // 로그인
         // http.formLogin().loginProcessingUrl("/login");
 
         // 로그아웃 + 로그아웃후 포워딩 URL
@@ -54,7 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     /**
      * 커스텀 인증
      *
-     * @param auth
+     * @param auth {@link AuthenticationManagerBuilder}
      * @throws Exception
      */
     @Override
