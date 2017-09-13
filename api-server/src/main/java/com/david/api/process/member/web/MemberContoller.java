@@ -33,7 +33,11 @@ class MemberContoller {
         String username = authentication.getUserAuthentication().getPrincipal().toString();
         Set<String> scopes = authentication.getOAuth2Request().getScope();
 
-        System.out.println("-----------"+username+"----");
+        System.out.println("1 -----------"+username+"----");
+
+        System.out.println("2 -----------"+scopes+"----");
+
+
 
         Member member = memberRepository.findByUsername(username);
 

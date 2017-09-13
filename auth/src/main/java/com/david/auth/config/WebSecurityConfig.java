@@ -42,15 +42,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .anyRequest().authenticated();
 
         // 모두 차단
+        http.authorizeRequests().anyRequest().authenticated();
+
         // 커스텀 로그인화면
         // TODO http://websystique.com/spring-security/spring-security-4-custom-login-form-annotation-example/
-        http.authorizeRequests()
-            .antMatchers("/login").permitAll()
-            .antMatchers("/**").authenticated()
-            .and().formLogin().loginPage("/login")
-            .usernameParameter("username").passwordParameter("password")
-            .and().csrf()
-            .and().exceptionHandling().accessDeniedPage("/Access_Denied");
+//        http.authorizeRequests()
+//            .antMatchers("/login").permitAll()
+//            .antMatchers("/**").authenticated()
+//            .and().formLogin().loginPage("/login")
+//            .usernameParameter("username").passwordParameter("password")
+//            .and().csrf()
+//            .and().exceptionHandling().accessDeniedPage("/Access_Denied");
 
         // http.csrf();
 
