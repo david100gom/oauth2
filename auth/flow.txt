@@ -6,6 +6,18 @@
 3. JWT 제외 -> oauth2 만 이용.
 4. https://developers.kakao.com/docs/restapi/user-management 를 참고하여 개발
 5. 로그인 페이지 -> id, password, client_id, client_secret 를 이용여 token 가져옴
+  (커스텀 로그인 http://syaku.tistory.com/286 체크 필요.)
 
 
-커스텀 로그인 http://syaku.tistory.com/286 체크 필요.
+안드로이드 앱 A 서비스 운영자(나)
+
+자체 계정이 아닌 facebook or naver oauth 이용시 Implicit 이용하여 로그인 후 Client Credentials 방식을 통해 API 서버 (A 서비스) 에 접근 ?
+A 자체 계정인 경우 Resource Owner Password 방식을 이용하여 인증후 API 서버 (A 서비스)에 접근 (auth 서버는 A 서비스내에 있다)
+
+
+
+
+인가 코드 승인 (Authorization Code)	웹 서버 상에서 동작하는 애플리케이션	- 가장 많이 사용되는 유형
+암시적 승인  (Implicit)	모바일 앱 또는 단말기에서 동작하는 웹 애플리케이션 (
+자원 소유자 패스워드 승인  (Resource Owner Password)	단말기 OS 또는 높은 신뢰 관계의 애플리케이션 -	 다른 유형들을 사용할 수 없는 경우에만 사용
+클라이언트 인증 정보 승인(Client Credentials)	애플리케이션 API 접근 - 신뢰하는 클라이언트만 사용
