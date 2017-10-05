@@ -37,8 +37,6 @@ class MemberContoller {
 
         System.out.println("2 -----------"+scopes+"----");
 
-
-
         Member member = memberRepository.findByUsername(username);
 
         return member;
