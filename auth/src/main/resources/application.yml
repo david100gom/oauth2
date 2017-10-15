@@ -80,12 +80,12 @@ spring:
             validationQuery : SELECT 1
             testWhileIdle : true
             timeBetweenEvictionRunsMillis : 1800000
-    jpa:
-      hibernate:
-        ddl-auto: update
-        naming:
-          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-      show-sql: false
+#    jpa:
+#      hibernate:
+#        ddl-auto: update
+#       naming:
+#          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+#      show-sql: false
 
 
 # Actuator 읽기 인증 제거

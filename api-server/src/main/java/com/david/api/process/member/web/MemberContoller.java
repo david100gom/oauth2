@@ -7,11 +7,13 @@ import com.david.api.process.member.domain.MemberData;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collection;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -34,7 +36,6 @@ class MemberContoller {
         Set<String> scopes = authentication.getOAuth2Request().getScope();
 
         System.out.println("1 -----------"+username+"----");
-
         System.out.println("2 -----------"+scopes+"----");
 
         Member member = memberRepository.findByUsername(username);

@@ -1,6 +1,8 @@
 package com.david.auth.process.member.service;
 
+import com.david.auth.process.member.dao.AuthorityDAO;
 import com.david.auth.process.member.dao.AuthorityRepository;
+import com.david.auth.process.member.dao.MemberDAO;
 import com.david.auth.process.member.dao.MemberRepository;
 import com.david.auth.process.member.domain.Authority;
 import com.david.auth.process.member.domain.Member;
@@ -30,6 +32,12 @@ public class MemberServiceImpl implements MemberService{
     @Autowired
     AuthorityRepository authorityRepository;
 
+    @Autowired
+    MemberDAO memberDAO;
+
+    @Autowired
+    AuthorityDAO authorityDAO;
+
     /**
      *
      * 권한 정보 매핑
@@ -40,11 +48,14 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public Collection<GrantedAuthority> getAuthorities(String username) {
 
-        List<Authority> list = authorityRepository.findByUsername(username);   // jpa
+        //List<Authority> list = authorityRepository.findByUsername(username);   // jpa
+        List<Authority> list = authorityDAO.getAuthInfo(username);   // jpa
 
         List<GrantedAuthority> gaList = new ArrayList<>();
 
         for(Authority str : list) {
+
+            System.out.println("======>"+str.getAuthorityName());
             gaList.add(new SimpleGrantedAuthority(str.getAuthorityName()));
         }
 
@@ -62,7 +73,9 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        Member member = memberRepository.findByUsername(username);  // jpa
+        //Member member = memberRepository.findByUsername(username);  // jpa
+
+        Member member = memberDAO.getUserInfo(username);
 
         if(member == null) throw new UsernameNotFoundException("No Data");
 
