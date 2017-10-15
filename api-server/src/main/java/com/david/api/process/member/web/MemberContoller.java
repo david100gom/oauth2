@@ -28,7 +28,7 @@ class MemberContoller {
     @Autowired
     MemberRepository memberRepository;
 
-    @PreAuthorize("#oauth2.hasScope('member.info.public')")
+    //@PreAuthorize("#oauth2.hasScope('member.info.public')")
     @RequestMapping("/api/member")
     public Member member(@AuthenticationPrincipal OAuth2Authentication authentication) {
 

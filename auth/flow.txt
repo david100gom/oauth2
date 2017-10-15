@@ -12,6 +12,11 @@
 6. JPA > MyBatis 변경 필요
    - UserDetailsService 와 AuthenticationProvider 를 이용하여 MyBatis DAO 구성하면 됨 (참고 : http://syaku.tistory.com/286)
 
+7. MEMBER, AUTHORITY, OAUTH_ACCESS_TOKEN, OAUTH_CLIENT_DETAILS (client_id, client_secret), OAUTH_REFRESH_TOKEN
+
+   데이터 없는 테이블 : OAUTH_APPROVALS, OAUTH_CLIENT_TOKEN, OAUTH_CODE
+
+
 안드로이드 앱 A 서비스 운영자(나)
 
 자체 계정이 아닌 facebook or naver oauth 이용시 Implicit 이용하여 로그인 후 Client Credentials 방식을 통해 인증후 API 서버 (A 서비스) 에 접근 ?
