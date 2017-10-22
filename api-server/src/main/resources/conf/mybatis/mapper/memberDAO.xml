@@ -3,7 +3,12 @@
 <mapper namespace="memberDAO">
 
     <select id="GET_MEMBER_INFO" parameterType="string" resultType="member">
-        SELECT * FROM MEMBER WHERE username = #{username}
+        SELECT username, password, name, last_login_date AS lastLoginDate,
+               account_non_expired AS accountNonExpired,
+               account_non_locked AS accountNonLocked,
+               credentials_non_expired AS credentialsNonExpired,
+               enabled AS enabled
+          FROM MEMBER WHERE username = #{username}
     </select>
 
 </mapper>

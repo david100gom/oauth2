@@ -1,8 +1,7 @@
 package com.david.api.process.member.web;
 
-import com.david.api.process.member.dao.MemberRepository;
+
 import com.david.api.process.member.domain.Member;
-import com.david.api.process.member.domain.MemberData;
 import com.david.api.process.member.service.MemberService;
 
 import org.slf4j.LoggerFactory;
@@ -28,7 +27,6 @@ class MemberContoller {
 
     @Autowired
     public MemberService memberService;
-    //MemberRepository memberRepository;
 
     //@PreAuthorize("#oauth2.hasScope('member.info.public')")
     @RequestMapping("/api/member")
@@ -43,7 +41,7 @@ class MemberContoller {
         //Member member = memberRepository.findByUsername(username);
 
         Member member = memberService.getMemberInfo(username);
+
         return member;
-        //return MemberData.from(member, scopes);
     }
 }

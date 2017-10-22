@@ -10,15 +10,10 @@ import javax.persistence.Table;
  *
  * Github : https://github.com/david100gom
  */
-@Entity
-@Table(name="AUTHORITY")
 public class Authority {
 
-    @Id
     private int seq;                // PK
     private String username;        // 아이디
-
-    @Column(name="authority_name")
     private String authorityName;   // 권한명
 
     public int getSeq() {

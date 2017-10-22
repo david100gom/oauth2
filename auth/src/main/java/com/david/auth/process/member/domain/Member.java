@@ -23,31 +23,24 @@ import lombok.Data;
  *
  * Github : https://github.com/david100gom
  */
-@Entity
-@Table(name="MEMBER")
 public class Member implements UserDetails {
 
-    @Id
+    private static final long serialVersionUID = 1L;
+
     private String username;    // 아이디 (PK)
-    @Column
     private String password;    // 패스워드
-    @Column
     private String name;        // 이름
+    private boolean accountNonExpired;        //  계정 만료여부
+    private boolean accountNonLocked;         //  계정 잠금여부
+    private boolean credentialsNonExpired;    //  패스워드 만료
+    private boolean enabled;                  //  계정활성화 여부
 
-    @Column(name="isAccountNonExpired")
-    private boolean isAccountNonExpired;        //  계정 만료여부
-
-    @Column(name="isAccountNonLocked")
-    private boolean isAccountNonLocked;         //  계정 잠금여부
-
-    @Column(name="isCredentialsNonExpired")
-    private boolean isCredentialsNonExpired;    //  패스워드 만료
-
-    @Column(name="isEnabled")
-    private boolean isEnabled;                  //  계정활성화 여부
-
-    @Transient
     private Collection<? extends GrantedAuthority> authorities; // 권한
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
 
     public void setUsername(String username) {
         this.username = username;
@@ -65,22 +58,6 @@ public class Member implements UserDetails {
         this.name = name;
     }
 
-    public void setAccountNonExpired(boolean accountNonExpired) {
-        isAccountNonExpired = accountNonExpired;
-    }
-
-    public void setAccountNonLocked(boolean accountNonLocked) {
-        isAccountNonLocked = accountNonLocked;
-    }
-
-    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
-        isCredentialsNonExpired = credentialsNonExpired;
-    }
-
-    public void setEnabled(boolean enabled) {
-        isEnabled = enabled;
-    }
-
     public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
         this.authorities = authorities;
     }
@@ -96,28 +73,39 @@ public class Member implements UserDetails {
     }
 
     @Override
-    public String getUsername() {
-        return username;
+    public boolean isAccountNonExpired() {
+        return accountNonExpired;
     }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return isAccountNonExpired;
+    public void setAccountNonExpired(boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return isAccountNonLocked;
+        return accountNonLocked;
+    }
+
+    public void setAccountNonLocked(boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return isCredentialsNonExpired;
+        return credentialsNonExpired;
+    }
+
+    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+        this.credentialsNonExpired = credentialsNonExpired;
     }
 
     @Override
     public boolean isEnabled() {
-        return isEnabled;
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }
 

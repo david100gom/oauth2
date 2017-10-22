@@ -40,13 +40,16 @@ public class OAuth2Configuration {
 
     @Bean
     public TokenStore jdbcTokenStore() {
-        return new JdbcTokenStore(dataSource);
+        JdbcTokenStore jdbcTokenStore = new JdbcTokenStore(dataSource);
+        //jdbcTokenStore.setInsertAccessTokenSql("INSERT *** ");
+        return jdbcTokenStore;
     }
 
     @Bean
     @Primary
     public JdbcClientDetailsService jdbcClientDetailsService() {
-        return new JdbcClientDetailsService(dataSource);
+        JdbcClientDetailsService jdbcClientDetailsService = new JdbcClientDetailsService(dataSource);
+        return jdbcClientDetailsService;
     }
 
 

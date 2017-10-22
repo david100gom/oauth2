@@ -17,38 +17,32 @@ import lombok.Data;
  *
  * Github : https://github.com/david100gom
  */
-@Data
-@Entity
 public class Member {
 
-    @Id
-    @GeneratedValue
-    Long id;
-    String name;
-    @Column(unique = true)
-    String username;
-    String email;
-    String phone;
-    String nick;
-    @Temporal(TemporalType.TIMESTAMP)
-    Date lastLoginDate;
-    String remark;
 
-    public Member() {}
-    public Member(String name, String username, String email, String phone, String nick, Date lastLoginDate, String remark) {
-        this.name = name;
+    private String username;    // 아이디 (PK)
+    private String password;    // 패스워드
+    private String name;        // 이름
+    private boolean accountNonExpired;        //  계정 만료여부
+    private boolean accountNonLocked;         //  계정 잠금여부
+    private boolean credentialsNonExpired;    //  패스워드 만료
+    private boolean enabled;                  //  계정활성화 여부
+    private String lastLoginDate;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
         this.username = username;
-        this.email = email;
-        this.phone = phone;
-        this.remark = remark;
     }
 
-    public Long getId() {
-        return id;
+    public String getPassword() {
+        return password;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {
@@ -59,51 +53,43 @@ public class Member {
         this.name = name;
     }
 
-    public String getUsername() {
-        return username;
+    public boolean isAccountNonExpired() {
+        return accountNonExpired;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setAccountNonExpired(boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
     }
 
-    public String getEmail() {
-        return email;
+    public boolean isAccountNonLocked() {
+        return accountNonLocked;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAccountNonLocked(boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
     }
 
-    public String getPhone() {
-        return phone;
+    public boolean isCredentialsNonExpired() {
+        return credentialsNonExpired;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+        this.credentialsNonExpired = credentialsNonExpired;
     }
 
-    public String getNick() {
-        return nick;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setNick(String nick) {
-        this.nick = nick;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
-    public Date getLastLoginDate() {
+    public String getLastLoginDate() {
         return lastLoginDate;
     }
 
-    public void setLastLoginDate(Date lastLoginDate) {
+    public void setLastLoginDate(String lastLoginDate) {
         this.lastLoginDate = lastLoginDate;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
     }
 }

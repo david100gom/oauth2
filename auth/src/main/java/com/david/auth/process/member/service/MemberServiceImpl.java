@@ -1,9 +1,7 @@
 package com.david.auth.process.member.service;
 
 import com.david.auth.process.member.dao.AuthorityDAO;
-import com.david.auth.process.member.dao.AuthorityRepository;
 import com.david.auth.process.member.dao.MemberDAO;
-import com.david.auth.process.member.dao.MemberRepository;
 import com.david.auth.process.member.domain.Authority;
 import com.david.auth.process.member.domain.Member;
 
@@ -26,11 +24,6 @@ import java.util.List;
 @Service
 public class MemberServiceImpl implements MemberService{
 
-    @Autowired
-    MemberRepository memberRepository;
-
-    @Autowired
-    AuthorityRepository authorityRepository;
 
     @Autowired
     MemberDAO memberDAO;
