@@ -41,7 +41,10 @@ public class OAuth2Configuration {
     @Bean
     public TokenStore jdbcTokenStore() {
         JdbcTokenStore jdbcTokenStore = new JdbcTokenStore(dataSource);
-        //jdbcTokenStore.setInsertAccessTokenSql("INSERT *** ");
+        // user_name 을 username 으로 변경하기 위해 스키마 오버라이드함
+        jdbcTokenStore.setInsertAccessTokenSql("insert into oauth_access_token (token_id, token, authentication_id, username, client_id, authentication, refresh_token) values (?, ?, ?, ?, ?, ?, ?)");
+        jdbcTokenStore.setSelectAccessTokensFromUserNameAndClientIdSql("select token_id, token from oauth_access_token where username = ? and client_id = ?");
+        jdbcTokenStore.setSelectAccessTokensFromUserNameSql("select token_id, token from oauth_access_token where username = ?");
         return jdbcTokenStore;
     }
 
