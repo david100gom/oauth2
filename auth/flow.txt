@@ -17,7 +17,10 @@
 
    -> DB 구성필요.
 
+최종결론 : 자사 서비스에 자체 oauth 도입시 Resource Owner Password 로 개발하면 됨
+
 기타 : oAuth2 프레임워크 없이 토큰을 구성하기 어렵기 때문에 spring security oauth2 framework 를 활용한다.
+참고 페이지 : 모바일 인증 (JWT) 활용 : http://throughkim.kr/2017/03/14/Jwt/#작동방식
 
 개발일정 :
 
