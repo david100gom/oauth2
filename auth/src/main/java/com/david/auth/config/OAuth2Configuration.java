@@ -48,6 +48,7 @@ public class OAuth2Configuration {
         return jdbcTokenStore;
     }
 
+    // TODO spring security oauth2 만 spring security 에서 사용중인 멤버관련와 분리할 수 없나?
     @Bean
     @Primary
     public JdbcClientDetailsService jdbcClientDetailsService() {
