@@ -19,7 +19,9 @@ public class MemberController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
+
+        System.out.print("==========>>>>>>>>");
+
         return "login";
     }
-
 }
