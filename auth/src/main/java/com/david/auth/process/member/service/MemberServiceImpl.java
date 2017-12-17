@@ -41,14 +41,11 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public Collection<GrantedAuthority> getAuthorities(String username) {
 
-        //List<Authority> list = authorityRepository.findByUsername(username);   // jpa
-        List<Authority> list = authorityDAO.getAuthInfo(username);   // jpa
+        List<Authority> list = authorityDAO.getAuthInfo(username);
 
         List<GrantedAuthority> gaList = new ArrayList<>();
 
         for(Authority str : list) {
-
-            System.out.println("======>"+str.getAuthorityName());
             gaList.add(new SimpleGrantedAuthority(str.getAuthorityName()));
         }
 
@@ -65,8 +62,6 @@ public class MemberServiceImpl implements MemberService{
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-        //Member member = memberRepository.findByUsername(username);  // jpa
 
         Member member = memberDAO.getUserInfo(username);
 
