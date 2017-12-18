@@ -1,0 +1,90 @@
+
+auth-server.sh
+
+#!/bin/sh
+SERVICE_NAME=Auth-Server
+PATH_TO_JAR=/data/auth-server-0.0.1.jar
+PID_PATH_NAME=/tmp/auth-server-pid
+JAVA_OPTS="-Xms1G -Xmx1G -server -Dfile.encoding=UTF-8 -Dspring.profiles.active=dev"
+case $1 in
+    start)
+        echo "Starting $SERVICE_NAME ..."
+        if [ ! -f $PID_PATH_NAME ]; then
+            nohup java $JAVA_OPTS -jar $PATH_TO_JAR /tmp 2>> /dev/null >> /dev/null & echo $! > $PID_PATH_NAME
+            echo "$SERVICE_NAME started ..."
+        else
+            echo "$SERVICE_NAME is already running ..."
+        fi
+    ;;
+    stop)
+        if [ -f $PID_PATH_NAME ]; then
+            PID=$(cat $PID_PATH_NAME);
+            echo "$SERVICE_NAME stoping ..."
+            kill -9 $PID;
+            echo "$SERVICE_NAME stopped ..."
+            rm $PID_PATH_NAME
+        else
+            echo "$SERVICE_NAME is not running ..."
+        fi
+    ;;
+    restart)
+        if [ -f $PID_PATH_NAME ]; then
+            PID=$(cat $PID_PATH_NAME);
+            echo "$SERVICE_NAME stopping ...";
+            kill -9 $PID;
+            echo "$SERVICE_NAME stopped ...";
+            rm $PID_PATH_NAME
+            echo "$SERVICE_NAME starting ..."
+            nohup java $JAVA_OPTS -jar $PATH_TO_JAR /tmp 2>> /dev/null >> /dev/null & echo $! > $PID_PATH_NAME
+            echo "$SERVICE_NAME started ..."
+        else
+            echo "$SERVICE_NAME is not running ..."
+        fi
+    ;;
+esac
+
+
+
+api-server.sh
+
+#!/bin/sh
+SERVICE_NAME=Api-Server
+PATH_TO_JAR=/data/api-server-0.0.1.jar
+PID_PATH_NAME=/tmp/api-server-pid
+JAVA_OPTS="-Xms1G -Xmx1G -server -Dfile.encoding=UTF-8 -Dspring.profiles.active=dev"
+case $1 in
+    start)
+        echo "Starting $SERVICE_NAME ..."
+        if [ ! -f $PID_PATH_NAME ]; then
+            nohup java $JAVA_OPTS -jar $PATH_TO_JAR /tmp 2>> /dev/null >> /dev/null & echo $! > $PID_PATH_NAME
+            echo "$SERVICE_NAME started ..."
+        else
+            echo "$SERVICE_NAME is already running ..."
+        fi
+    ;;
+    stop)
+        if [ -f $PID_PATH_NAME ]; then
+            PID=$(cat $PID_PATH_NAME);
+            echo "$SERVICE_NAME stoping ..."
+            kill -9 $PID;
+            echo "$SERVICE_NAME stopped ..."
+            rm $PID_PATH_NAME
+        else
+            echo "$SERVICE_NAME is not running ..."
+        fi
+    ;;
+    restart)
+        if [ -f $PID_PATH_NAME ]; then
+            PID=$(cat $PID_PATH_NAME);
+            echo "$SERVICE_NAME stopping ...";
+            kill -9 $PID;
+            echo "$SERVICE_NAME stopped ...";
+            rm $PID_PATH_NAME
+            echo "$SERVICE_NAME starting ..."
+            nohup java $JAVA_OPTS -jar $PATH_TO_JAR /tmp 2>> /dev/null >> /dev/null & echo $! > $PID_PATH_NAME
+            echo "$SERVICE_NAME started ..."
+        else
+            echo "$SERVICE_NAME is not running ..."
+        fi
+    ;;
+esac
