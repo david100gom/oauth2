@@ -2,10 +2,23 @@
 auth-server.sh
 
 #!/bin/sh
+
+USER_NAME=ec2-user
+
+# Check User Name
+IAM=`id | awk '{print substr($1, 1, index($1,")")-1 )}' | awk '{print substr($1, index($1,"(")+1 )}'`
+
+# Check startup user validation
+if [ $USER_NAME != $IAM ]
+then
+ echo "Startup Error : User validation is failed. This instance has been started as \"$IAM\", actual script owner is \"$USER_NAME\""
+ exit
+fi
+
 SERVICE_NAME=Auth-Server
 PATH_TO_JAR=/data/auth-server-0.0.1.jar
 PID_PATH_NAME=/tmp/auth-server-pid
-JAVA_OPTS="-Xms1G -Xmx1G -server -Dfile.encoding=UTF-8 -Dspring.profiles.active=dev"
+JAVA_OPTS="-Xms1g -Xmx1g -XX:MaxMetaspaceSize=256m -server -Dfile.encoding=UTF-8 -Dspring.profiles.active=dev"
 case $1 in
     start)
         echo "Starting $SERVICE_NAME ..."
@@ -48,10 +61,24 @@ esac
 api-server.sh
 
 #!/bin/sh
+
+USER_NAME=ec2-user
+
+# Check User Name
+IAM=`id | awk '{print substr($1, 1, index($1,")")-1 )}' | awk '{print substr($1, index($1,"(")+1 )}'`
+
+# Check startup user validation
+if [ $USER_NAME != $IAM ]
+then
+ echo "Startup Error : User validation is failed. This instance has been started as \"$IAM\", actual script owner is \"$USER_NAME\""
+ exit
+fi
+
+
 SERVICE_NAME=Api-Server
 PATH_TO_JAR=/data/api-server-0.0.1.jar
 PID_PATH_NAME=/tmp/api-server-pid
-JAVA_OPTS="-Xms1G -Xmx1G -server -Dfile.encoding=UTF-8 -Dspring.profiles.active=dev"
+JAVA_OPTS="-Xms1g -Xmx1g -XX:MaxMetaspaceSize=256m -server -Dfile.encoding=UTF-8 -Dspring.profiles.active=dev"
 case $1 in
     start)
         echo "Starting $SERVICE_NAME ..."
