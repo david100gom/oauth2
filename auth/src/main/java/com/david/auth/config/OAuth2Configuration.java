@@ -27,6 +27,17 @@ public class OAuth2Configuration {
     @Qualifier("firstDataSource")
     DataSource dataSource;
 
+
+//    @Bean
+//    public TokenStore tokenStore() {
+//        return new JwtTokenStore(jwtAccessTokenConverter());
+//    }
+//
+//    @Bean
+//    public JwtAccessTokenConverter jwtAccessTokenConverter() {
+//        return new JwtAccessTokenConverter();
+//    }
+
     @Bean
     public TokenStore jdbcTokenStore() {
         JdbcTokenStore jdbcTokenStore = new JdbcTokenStore(dataSource);
