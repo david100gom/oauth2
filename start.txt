@@ -1,3 +1,6 @@
+java -Xms1g -Xmx1g -XX:MaxMetaspaceSize=256m -XX:+CMSClassUnloadingEnabled -server -Dspring.profiles.active=dev -jar XXX.jar &
+
+logs 폴더 권한을 일반으로.
 
 auth-server.sh
 
