@@ -49,14 +49,13 @@ server :
     tomcat :
         uri-encoding : UTF-8
     servlet-path : /*
-    port: 8080
+    port: 9090
 
 spring:
-    profiles:
-      active: local
+    profiles: local
     first :
         datasource:
-            url : jdbc:mysql://localhost:3306/OAUTH_PRO?useUnicode=true&characterEncoding=UTF-8&useSSL=true
+            url : jdbc:mysql://localhost:3306/OAUTH_PRO?useUnicode=true&characterEncoding=UTF-8
             driver-class-name : com.mysql.jdbc.Driver
             username : root
             password : 1111
@@ -69,7 +68,7 @@ spring:
             timeBetweenEvictionRunsMillis : 1800000
     second :
         datasource:
-            url : jdbc:mysql://localhost:3306/OAUTH_PRO?useUnicode=true&characterEncoding=UTF-8&useSSL=true
+            url : jdbc:mysql://localhost:3306/OAUTH_PRO?useUnicode=true&characterEncoding=UTF-8
             driver-class-name : com.mysql.jdbc.Driver
             username : root
             password : 1111
@@ -88,6 +87,8 @@ spring:
 #      show-sql: false
 
 
+
+
 # Actuator 읽기 인증 제거
 management :
     security :
@@ -103,17 +104,16 @@ server :
     tomcat :
         uri-encoding : UTF-8
     servlet-path : /*
-    port: 8080
+    port: 9090
 
 spring:
-    profiles:
-      active: dev
+    profiles: dev
     first :
         datasource:
             url : jdbc:mysql://localhost:3306/OAUTH_PRO?useUnicode=true&characterEncoding=UTF-8&useSSL=true
             driver-class-name : com.mysql.jdbc.Driver
             username : root
-            password : 1111
+            password : vldpsxl1q2w3e
             type : javax.sql.DataSource
             maxActive : 50
             maxIdle : 0
@@ -126,7 +126,7 @@ spring:
             url : jdbc:mysql://localhost:3306/OAUTH_PRO?useUnicode=true&characterEncoding=UTF-8&useSSL=true
             driver-class-name : com.mysql.jdbc.Driver
             username : root
-            password : 1111
+            password : vldpsxl1q2w3e
             type : javax.sql.DataSource
             maxActive : 50
             maxIdle : 0

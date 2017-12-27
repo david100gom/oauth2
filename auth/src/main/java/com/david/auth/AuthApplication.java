@@ -14,8 +14,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
  * @TODO 계정연동 확인필요
  *
  */
-@EnableAuthorizationServer
 @SpringBootApplication
+@EnableAuthorizationServer
 public class AuthApplication {
 
 	public static void main(String[] args) {

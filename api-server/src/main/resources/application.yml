@@ -32,7 +32,7 @@ security :
             #authorized-grant-types: authorization_code,refresh_token,password
             #scope: member.info.public
         resource:
-            token-info-uri: http://localhost:8080/oauth/check_token
+            token-info-uri: http://localhost:9090/oauth/check_token
             #jwt:
                 #key-uri: http://localhost:8080/oauth/token_key  # uri 인증방식
                 #key-value: jwt_key_test                        # key-value 인증방식
@@ -45,11 +45,10 @@ server :
     tomcat :
         uri-encoding : UTF-8
     servlet-path : /*
-    port: 8081
+    port: 9091
 
 spring:
-    profiles:
-      active: local
+    profiles: local
     first :
         datasource:
             url : jdbc:mysql://localhost:3306/OAUTH_PRO?useUnicode=true&characterEncoding=UTF-8&useSSL=true
@@ -99,17 +98,16 @@ server :
     tomcat :
         uri-encoding : UTF-8
     servlet-path : /*
-    port: 8081
+    port: 9091
 
 spring:
-    profiles:
-      active: dev
+    profiles: dev
     first :
         datasource:
             url : jdbc:mysql://localhost:3306/OAUTH_PRO?useUnicode=true&characterEncoding=UTF-8&useSSL=true
             driver-class-name : com.mysql.jdbc.Driver
             username : root
-            password : 1111
+            password : vldpsxl1q2w3e
             type : javax.sql.DataSource
             maxActive : 50
             maxIdle : 0
@@ -122,7 +120,7 @@ spring:
             url : jdbc:mysql://localhost:3306/OAUTH_PRO?useUnicode=true&characterEncoding=UTF-8&useSSL=true
             driver-class-name : com.mysql.jdbc.Driver
             username : root
-            password : 1111
+            password : vldpsxl1q2w3e
             type : javax.sql.DataSource
             maxActive : 50
             maxIdle : 0
