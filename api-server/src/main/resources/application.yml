@@ -107,7 +107,7 @@ spring:
             url : jdbc:mysql://localhost:3306/OAUTH_PRO?useUnicode=true&characterEncoding=UTF-8&useSSL=true
             driver-class-name : com.mysql.jdbc.Driver
             username : root
-            password : vldpsxl1q2w3e
+            password : 1111
             type : javax.sql.DataSource
             maxActive : 50
             maxIdle : 0
@@ -120,7 +120,7 @@ spring:
             url : jdbc:mysql://localhost:3306/OAUTH_PRO?useUnicode=true&characterEncoding=UTF-8&useSSL=true
             driver-class-name : com.mysql.jdbc.Driver
             username : root
-            password : vldpsxl1q2w3e
+            password : 1111
             type : javax.sql.DataSource
             maxActive : 50
             maxIdle : 0
